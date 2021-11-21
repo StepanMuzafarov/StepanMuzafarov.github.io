@@ -1,2 +1,2 @@
-# StepanMuzafarov.github.io
+# Степан Музафаров
 My first site
