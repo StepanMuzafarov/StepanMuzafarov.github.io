@@ -1,2 +1,2 @@
 # StepanMuzafarov.github.io
-My firs site
+My first site
