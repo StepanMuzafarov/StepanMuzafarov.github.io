@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./icons/Logo.svg" type="image/logo.svg">
+  <title>Wardrobe</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="/">
+        <img class="logo_wardrobe" src="./images/Logo_white.svg" alt="">
+      </a>
+      <input id="burger-toggle" type="checkbox">
+      <label for="burger-toggle">
+        <span></span>
+      </label>
+      <ul class="header__list">
+        <li>
+          <a href="#opportunities-anchor" class="header__link">Возможности</a>
+        </li>
+        <li>
+          <a href="#price-anchor" class="header__link">Тарифы</a>
+        </li>
+        <li>
+          <a href="#footer-anchor" class="header__link">Контакты</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <div class="hero-section">
+        <h1 class="slogan">Облачаная ERP </br>для вашего бизнеса</h1>
+        <p class="under-slogan">Все, что нужно — в одной системе: продажи, закупки, склад, финансы. </p>
+    </div>
+    <div class="opportunities" id="opportunities-anchor">
+        <h2>Возможности</h2>
+        <div class="container">
+            <div class="column">
+                <div class="item inventory">
+                    <img src="./images/Product system.png" alt="">
+                    <p class="text-inventory"><b>Товароучетная система</b><br>Управление товарами и ценами.<br>Планирование закупок и контроль остатков.<br>Резервы. Модификации. Инвентаризации.</p>
+                </div>
+                <div class="item CRM">
+                    <img src="./images/CRM.png" alt="">
+                    <p class="text-CRM"><b>CRM для торговли</b><br>История покупок, сегментация базы клиентов,<br>бонусные программы лояльности.<br>Статистика. Телефония и рассылки.</p>
+                </div>
+            </div>
+            <div class="column">
+                <div class="item automatization">
+                    <img src="./images/Automatization.png" alt="">
+                    <p><b>Автоматизация розницы</b><br>Простая программа для кассира.<br>На любом компьютере и смартфоне.</p>
+                </div>
+                <div class="item integration">
+                    <img src="./images/Integration.png" alt="">
+                    <p><b>Интеграция</b><br>Больше 100 готовых интеграций: CMS, маркетплейсы,<br>аналитика, банки, службы доставки.<br>Экспорт в 1С:Бухгалтерию. API. Помощь с настройками.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="price" id="price-anchor">
+        <h2 class="choose-price">Выберите свой тариф</h2>
+        <p class="under-price">Хотите организовать производство или наладить его работу? Тогда у Wardrobe есть подходящий вариант для вас.</p>
+        
+        <div class="rate-container">
+            <div class="rate free">
+                <h3 class="text-free">Бесплатный</h3>
+                <p class="price-value">0 руб/мес</p> <!-- Изменено для нового класса -->
+                <p class="what-included">Что включено:</p>
+                <ul class="features">
+                    <li>Учет поступлений и отгрузок</li>
+                    <li>Управление запасами</li>
+                </ul>
+            </div>
+            
+            <div class="rate subscription">
+                <h3 class="text-subscription">Подписка</h3>
+                <p class="price-value">199 руб/мес</p> <!-- Изменено для нового класса -->
+                <p class="what-included">Что включено:</p>
+                <ul class="features">
+                    <li>Учет поступлений и отгрузок</li>
+                    <li>Управление запасами</li>
+                    <li>Генерация отчетов</li>
+                    <li>Интеграция с интернет-магазинами</li>
+                    <li>Мобильное приложение</li>
+                    <li>API для интеграции</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+  </main>
+  <footer>
+    <div class="footer__top" id="footer-anchor">
+        <ul class="footer__list">
+            <li><a href="#opportunities-anchor" class="footer__link">Возможности</a></li>
+            <li><a href="#price-anchor" class="footer__link">Тарифы</a></li>
+            <li><a href="#footer-anchor" class="footer__link">Контакты</a></li>
+        </ul>
+        <div class="social-media">
+            <a href="https://vk.com" target="_blank">
+                <img class="icons_logo" src="./images/VK.svg" alt="VK" class="social-icon">
+            </a>
+            <a href="https://ok.ru" target="_blank">
+                <img class="icons_logo" src="./images/OD.svg" alt="OK" class="social-icon">
+            </a>
+            <a href="https://telegram.com" target="_blank">
+                <img class="icons_logo" src="./images/TG.svg" alt="Telegram" class="social-icon">
+            </a>
+        </div>
+    </div>
+    
+    <div class="footer__content">
+        <div class="newsletter">
+            <input type="email" placeholder="E-mail" class="email-input">
+            <button class="subscribe-button">Отправить</button>
+        </div>
+        <div class="logo-and-text">
+            <a href="/">
+                <img class="logo_wardrobe" src="./images/Logo_blue.svg" alt="">
+            </a>
+            <p class="footer__text">© Музафаров Степан 2024/2025</p>
+        </div>
+    </div>
+</footer>
+</body> 
+</html>

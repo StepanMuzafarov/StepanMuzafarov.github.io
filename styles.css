@@ -1,0 +1,1157 @@
+/**
+  Нормализация блочной модели
+ */
+ *,
+ ::before,
+ ::after {
+   box-sizing: border-box;
+ }
+ 
+ /**
+   Убираем внутренние отступы слева тегам списков,
+   у которых есть атрибут class
+  */
+ :where(ul, ol):where([class]) {
+   padding-left: 0;
+ }
+ 
+ /**
+   Убираем внешние отступы body и двум другим тегам,
+   у которых есть атрибут class
+  */
+ body,
+ :where(blockquote, figure):where([class]) {
+   margin: 0;
+ }
+ 
+ /**
+   Убираем внешние отступы вертикали нужным тегам,
+   у которых есть атрибут class
+  */
+ :where(
+   h1,
+   h2,
+   h3,
+   h4,
+   h5,
+   h6,
+   p,
+   ul,
+   ol,
+   dl
+ ):where([class]) {
+   margin-block: 0;
+ }
+ 
+ :where(dd[class]) {
+   margin-left: 0;
+ }
+ 
+ :where(fieldset[class]) {
+   margin-left: 0;
+   padding: 0;
+   border: none;
+ }
+ 
+ /**
+   Убираем стандартный маркер маркированному списку,
+   у которого есть атрибут class
+  */
+ :where(ul[class]) {
+   list-style: none;
+ }
+ 
+ :where(address[class]) {
+   font-style: normal;
+ }
+ 
+ /**
+   Обнуляем вертикальные внешние отступы параграфа,
+   объявляем локальную переменную для внешнего отступа вниз,
+   чтобы избежать взаимодействие с более сложным селектором
+  */
+ p {
+   --paragraphMarginBottom: 24px;
+ 
+   margin-block: 0;
+ }
+ 
+ /**
+   Внешний отступ вниз для параграфа без атрибута class,
+   который расположен не последним среди своих соседних элементов
+  */
+ p:where(:not([class]):not(:last-child)) {
+   margin-bottom: var(--paragraphMarginBottom);
+ }
+ 
+ 
+ /**
+   Упрощаем работу с изображениями и видео
+  */
+ img,
+ video {
+   display: block;
+   max-width: 100%;
+   height: auto;
+ }
+ 
+ /**
+   Наследуем свойства шрифт для полей ввода
+  */
+ input,
+ textarea,
+ select,
+ button {
+   font: inherit;
+ }
+ 
+ html {
+   /**
+     Пригодится в большинстве ситуаций
+     (когда, например, нужно будет "прижать" футер к низу сайта)
+    */
+   height: 100%;
+   /**
+     Убираем скачок интерфейса по горизонтали
+     при появлении / исчезновении скроллбара
+    */
+   scrollbar-gutter: stable;
+ }
+ 
+ /**
+   Плавный скролл
+  */
+ html,
+ :has(:target) {
+   scroll-behavior: smooth;
+ }
+ 
+ body {
+   /**
+     Пригодится в большинстве ситуаций
+     (когда, например, нужно будет "прижать" футер к низу сайта)
+    */
+   min-height: 100%;
+   /**
+     Унифицированный интерлиньяж
+    */
+   line-height: 1.5;
+ }
+ 
+ /**
+   Нормализация высоты элемента ссылки при его инспектировании в DevTools
+  */
+ a:where([class]) {
+   display: inline-flex;
+ }
+ 
+ /**
+   Курсор-рука при наведении на элемент
+  */
+ button,
+ label {
+   cursor: pointer;
+ }
+ 
+ /**
+   Приводим к единому цвету svg-элементы
+  */
+ [fill] { fill: currentColor }
+ [stroke] { stroke: currentColor }
+ 
+ /**
+   Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+  */
+ svg * {
+   transition-property: fill, stroke;
+ }
+ 
+ /**
+   Приведение рамок таблиц в классический 'collapse' вид
+  */
+ :where(table) {
+   border-collapse: collapse;
+   border-color: currentColor;
+ }
+ 
+ /**
+   Удаляем все анимации и переходы для людей,
+   которые предпочитают их не использовать
+  */
+ @media (prefers-reduced-motion: reduce) {
+   *,
+   ::before,
+   ::after {
+     animation-duration: 0.01ms !important;
+     animation-iteration-count: 1 !important;
+     transition-duration: 0.01ms !important;
+     scroll-behavior: auto !important;
+   }
+ }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/**********************************************************************************************************************************************************************************/
+/**********************************************************************************************************************************************************************************/
+/**********************************************************************************************************************************************************************************/
+/**********************************************************************************************************************************************************************************/
+/**********************************************************************************************************************************************************************************/
+
+/*HEADER*/
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 1vw 0;
+  z-index: 999;
+  background-color: #043873;
+}
+.logo_wardrobe{
+  width: 10vw;
+  height: 3vw;
+}
+nav {
+  max-width: 90%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+ul {
+  display: flex;
+  gap: 1vw;
+  transition: .5s;
+}
+
+li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1vw;
+}
+
+label {
+  display: none;
+}
+
+#burger-toggle {
+  display: none;
+}
+
+
+/*Desktop-version*/
+@media (min-width:769px) {
+
+body {
+  font-family: sans-serif;
+  width: 100%;
+  height: 100%;
+  background-color: #043873;
+  color: white;
+}
+
+/*HERO-SECTION*/
+.hero-section{
+  display: flex;
+  padding-inline: 4.6vw;
+  flex-direction: column;
+  padding-bottom: 21vw;
+}
+.slogan{
+  display: flex;
+  padding-top:18.23vw;
+  font-size: 2.86vw;
+  letter-spacing: -2%;
+  transition: .5s;
+}
+.under-slogan{
+  display: flex;
+  padding-top: 1.04vw;
+  font-size: 1.04vw;
+}
+/*OPPORTUNITIES*/
+.opportunities {
+  background-color: white;
+  color: black;
+  padding-top: 8vw;
+  padding-inline: 10.7vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Центрирование h2 */
+  padding-bottom: 7.8vw;
+}
+
+.opportunities h2 {
+  font-size: 3.33vw; /* Установим базовый размер текста */
+  text-align: center;
+  margin-bottom: 1.04vw;
+  padding-bottom: 3.91vw; /* Отступ снизу, чтобы колонки не примыкали к заголовку */
+}
+
+.container {
+  display: flex;
+  justify-content: center; /* Центрируем колонки */
+  width: 100%; /* Ширина контейнера на 100% */
+}
+
+ .column {
+    display: flex;
+    flex-direction: column; /* Вертикальное расположение элементов */
+    margin: 0 3vw; /* Убираем правый отступ, добавляем левый и правый отступы для колонок */
+    align-items: flex-start;
+  }
+  
+  .item {
+    display: flex;
+    align-items: flex-start; /* Выравнивание по вертикали */
+    margin-bottom: 3.7vw; /* Расстояние между элементами */
+  }
+  
+  .item img {
+    width: auto;
+    height: 4.3vw;
+    margin-right: 1.8vw; /* Расстояние между изображением и текстом */
+    max-height: 100%;
+  }
+  
+  .item p {
+    font-size: 1vw; /* Размер текста зависит от ширины экрана */
+    min-height: 10vw; /* Фиксированная высота для всех текстовых блоков */
+    margin: 0;
+  }
+
+
+/*PRICE*/
+.price {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  padding: 10% 0;
+}
+
+.choose-price {
+  font-size: 3vw;
+  margin-bottom: 0.3vw;
+}
+
+.under-price {
+  padding-top: 2vw;
+  padding-bottom: 3.3vw;
+  color: white;
+  font-size: 1vw;
+  margin-bottom: 1.6vw;
+  text-align: center;
+}
+
+.rate-container {
+  display: flex;
+  justify-content: center;
+  gap: 1.5vw;
+}
+
+.rate {
+  background-color: white;
+  border: 0.3vw solid #FDC210;
+  border-radius: 0.3vw;
+  width: 24vw;
+  height: 31vw auto; 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: black;
+  padding: 2vw;
+}
+
+.text-free, .text-subscription {
+  font-weight: bold;
+  font-size: 1.5vw;
+  margin-bottom: 0.3vw;
+}
+
+.price-value {
+  font-size: 1.7vw;
+  margin-bottom: 0.3vw;
+  align-self: flex-start;
+}
+
+.what-included {
+  font-size: 1vw;
+  margin-bottom: 0.3vw;
+}
+
+ul.features {
+  list-style: none;
+  display: block;
+  padding-top: 1.5vw;
+}
+
+ul.features li {
+  font-size: 1vw; 
+  margin-bottom: 1.5vw;
+}
+
+ul.features li::before {
+  content: "";
+  display: inline-block; 
+  width: 1vw;
+  height: 1vw;
+  background-image: url('./icons/Icon.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 0.3vw;
+}
+
+/*Footer*/
+footer {
+  background-color: white;
+  padding: 2.5vw 5vw;
+}
+
+.footer__top {
+  display: flex;
+  justify-content: space-between; /* Раздвигаем ссылки и социальные иконки */
+  align-items: center; /* Центрируем элементы по вертикали */
+  margin-bottom: 3vw; /* Отступ снизу для расстояния между элементами */
+}
+
+.footer__list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 3vw; /* Разрыв между пунктами списка */
+}
+
+.social-media {
+  display: flex;
+  gap: 4vw; /* Отступ между иконками соц. сетей */
+}
+
+.footer__content {
+  display: flex; /* Содержит логотип и подписку в одном ряду */
+  justify-content: space-between; /* Разделяет логотип и подписку */
+  align-items: flex-start; /* Выравнивание по верхнему краю */
+}
+
+.logo-and-text {
+  display: flex;
+  flex-direction: column; /* Вертикальное расположение логотипа и текста */
+  align-items: flex-start; /* Выравнивание по левому краю */
+}
+
+.newsletter {
+  display: flex; /* Размещаем input и button в одном ряду */
+  align-items: center; /* Центруем по вертикали */
+}
+
+.email-input {
+  padding: 0.5vw;
+  border: 0.1vw solid #ccc;
+  border-radius: 0.3vw;
+  margin-right: 1vw; /* Отступ между полем ввода и кнопкой */
+  width: 15vw;
+  font-size: 0.9vw;
+}
+
+.subscribe-button {
+  padding: 0.5vw 1vw;
+  background-color: #043873; /* Цвет кнопки */
+  color: white; /* Цвет текста на кнопке */
+  border: none;
+  border-radius: 0.3vw;
+  cursor: pointer;
+  width: 10vw;
+  font-size: 0.9vw;
+}
+
+.subscribe-button:hover {
+  background-color: #022A4D; /* Цвет кнопки при наведении */
+}
+
+.footer__text {
+  color:#043873;
+  text-align: left; /* Выравнивание текста по левому краю */
+  margin: 0.5vw 0 0; /* Отступ сверху */
+  font-size: 1vw;
+}
+
+.footer__link {
+  color: #043873;
+}
+.icons_logo{
+  width: 1.7vw;
+}
+  
+}
+/*Tablet-version*/
+@media (max-width: 768px) {
+  /*HEADER*/
+  label {
+    position: relative;
+    display: block;
+    height: 2.5vw; /* Изменено с 25px */
+    width: 3vw; /* Изменено с 30px */
+    margin: 0.5vw 0;
+}
+
+label::after, label::before, label span {
+    position: absolute;
+    width: 100%;
+    height: 0.3vw; /* Изменено с 3px */
+    background-color: white;
+    transition: .3s;
+}
+
+label::before {
+    content: "";
+    top: 0;
+}
+
+label::after {
+    content: "";
+    bottom: 0;
+}
+
+label span {
+    top: 1.1vw; /* Изменено с 11px */
+}
+
+#burger-toggle:checked ~ label::after {
+    transform: rotate(45deg);
+    bottom: 1vw; /* Изменено с 10px */
+}
+
+#burger-toggle:checked ~ label::before {
+    transform: rotate(-45deg);
+    top: 1.2vw; /* Изменено с 12px */
+}
+
+#burger-toggle:checked ~ label span {
+    transform: rotate(-45deg);
+    top: 1.2vw; /* Изменено с 12px */
+}
+
+ul {
+    position: fixed;
+    left: 0;
+    right: 0;
+    background-color: #043873;
+    padding-top: 30vw; /* Изменено с 300px */
+    margin-bottom: 0.5vw; /* Изменено с 5px */
+    z-index: -1;
+    flex-direction: column;
+    text-align: center;
+    
+    left: -100vw;
+    right: 100vw;
+}
+
+#burger-toggle:checked ~ ul {
+    left: 0;
+    right: 0;
+}
+
+li a {
+    font-size: 4vw; /* Оставлено без изменений */
+}
+  body {
+    font-family: sans-serif;
+    width: 100%;
+    height: 100%;
+    background-color: #043873;
+    color: white;
+  }
+  
+  /*HERO-SECTION*/
+  .hero-section{
+    display: flex;
+    padding-inline: 24.7vw;
+    flex-direction: column;
+    padding-bottom: 21vw;
+  }
+  .slogan{
+    display: flex;
+    padding-top:18.23vw;
+    font-size: 4.86vw;
+    letter-spacing: -2%;
+    transition: .5s;
+    text-align: center;
+  }
+  .under-slogan{
+    display: flex;
+    padding-top: 1.04vw;
+    text-align: center;
+    font-size: 2vw;
+  }
+  /*OPPORTUNITIES*/
+  .opportunities {
+    background-color: white;
+    color: black;
+    padding-top: 8vw;
+    padding-inline: 19.7vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрирование h2 */
+    padding-bottom: 7.8vw;
+  }
+  
+  .opportunities h2 {
+    font-size: 4.86vw; /* Установим базовый размер текста */
+    text-align: center;
+    margin-bottom: 1.04vw;
+    padding-bottom: 3.91vw; /* Отступ снизу, чтобы колонки не примыкали к заголовку */
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center; /* Центрируем колонки */
+    width: 150%; /* Ширина контейнера на 100% */
+  }
+  
+  .column {
+    display: flex;
+    flex-direction: column; /* Вертикальное расположение элементов */
+    margin: 0 3vw; /* Убираем правый отступ, добавляем левый и правый отступы для колонок */
+    align-items: flex-start;
+  }
+  
+  .item {
+    display: flex;
+    align-items: flex-start; /* Выравнивание по вертикали */
+    margin-bottom: 3.7vw; /* Расстояние между элементами */
+  }
+  
+  .item img {
+    width: auto;
+    height: 4.3vw;
+    margin-right: 1.8vw; /* Расстояние между изображением и текстом */
+    max-height: 100%;
+  }
+  
+  .item p {
+    font-size: 1.5vw; /* Размер текста зависит от ширины экрана */
+    min-height: 10vw; /* Фиксированная высота для всех текстовых блоков */
+    margin: 0;
+  }
+  
+  
+  /*PRICE*/
+  .price {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    padding: 10% 0;
+  }
+  
+  .choose-price {
+    font-size: 4.86vw;
+    margin-bottom: 0.3vw;
+  }
+  
+  .under-price {
+    padding-top: 2vw;
+    padding-bottom: 3.3vw;
+    color: white;
+    font-size: 2vw;
+    margin-bottom: 1.6vw;
+    text-align: center;
+    width: 60vw;
+  }
+  
+  .rate-container {
+    display: flex; /* Убедитесь, что используется flexbox */
+    justify-content: center; /* Центрируем контейнер */
+    gap: 1.5vw;
+    flex-wrap: wrap; /* Позволяет строкам переноситься */
+}
+  
+  .rate {
+    background-color: white;
+    border: 0.3vw solid #FDC210;
+    border-radius: 0.3vw;
+    width: 37vw;
+    height: 51vw auto; 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: black;
+    padding: 2vw;
+  }
+  
+  .text-free, .text-subscription {
+    font-weight: bold;
+    font-size: 2.5vw;
+    margin-bottom: 0.3vw;
+  }
+  
+  .price-value {
+    font-size: 3.7vw;
+    margin-bottom: 0.3vw;
+    align-self: flex-start;
+  }
+  
+  .what-included {
+    font-size: 2vw;
+    margin-bottom: 0.3vw;
+  }
+  
+  ul.features {
+    padding: 0; /* Убираем отступы */
+    margin: 0; /* Убираем маргины */
+    list-style: none; /* Убираем стандартный стиль списка */
+    display: block; /* Отображаем как блок */
+    margin-top: 1.5vw; /* Отступ сверху */
+    position: relative; /* Делаем позиционирование относительно родителя */
+    z-index: 999; /* Повышаем z-index для видимости */
+    text-align: left; /* Выравнивание текста */
+    background-color: transparent; /* Прозрачный фон */
+    left:0;
+    right:0;
+}
+
+ul.features li {
+    font-size: 1.7vw; 
+    margin-bottom: 1.5vw; 
+    color: black; /* Убедитесь, чтобы цвет текста был виден на фоне */
+}
+  
+  ul.features li::before {
+    content: "";
+    display: inline-block; 
+    width: 2.5vw;
+    height: 2.5vw;
+    background-image: url('./icons/Icon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 1vw;
+  }
+  
+  /*Footer*/
+  footer {
+    background-color: white;
+    padding: 2.5vw 6vw;
+}
+
+  .footer__top {
+      display: flex;
+      flex-direction: column; /* Изменено на column для вертикального расположения */
+      align-items: center; /* Центрирование содержимого */
+      margin-bottom: 3vw;
+}
+
+  .footer__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: none;
+    display: flex;
+    width: auto;
+    height: auto;
+    gap: 0;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-wrap: nowrap;
+}
+  .footer__link {
+    color: #043873;
+    text-decoration: none;
+    text-align: center;
+}
+  .social-media {
+    display: flex;
+    gap: 4vw;
+    justify-content: center;
+    margin-bottom: 3vw;
+}
+  
+  .footer__content {
+    display: flex;
+    flex-direction: column; /* Добавлено для вертикального расположения */
+    align-items: center; /* Центрирование содержимого */
+    justify-content: center; /* Центрирование содержимого */
+}
+  
+  .logo-and-text {
+    display: flex;
+    text-align: center;
+    flex-direction: column; /* Вертикальное расположение логотипа и текста */
+    align-items: center; /* Изменено на center для обработки всего контента */
+}
+  
+  .newsletter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3vw;
+}
+  .email-input {
+    padding: 0.5vw;
+    border: 0.1vw solid #ccc;
+    border-radius: 0.3vw;
+    margin-right: 1vw; /* Отступ между полем ввода и кнопкой */
+    width: 15vw;
+    font-size: 0.9vw;
+  }
+  .subscribe-button {
+    padding: 0.5vw 1vw;
+    background-color: #043873; /* Цвет кнопки */
+    color: white; /* Цвет текста на кнопке */
+    border: none;
+    border-radius: 0.3vw;
+    cursor: pointer;
+    width: 10vw;
+    font-size: 0.9vw;
+  }
+
+  .subscribe-button:hover {
+    background-color: #022A4D; /* Цвет кнопки при наведении */
+  }
+  
+  .footer__text {
+    color: #043873;
+    text-align: center; /* Изменено на center для выравнивания по центру */
+    margin: 0.5vw 0 0;
+    font-size: 1vw;
+}
+  
+  .icons_logo{
+    width: 2.7vw;
+    height: auto;
+  }
+  .logo_wardrobe{
+    width: 16vw;
+    height: auto;
+    padding-top: 1vw;
+  }
+  }
+
+/*Mobile-version*/
+@media (max-width: 360px) {
+  /*HEADER*/
+  label {
+    position: relative;
+    display: block;
+    height: 2.5vw;
+    width: 3vw;
+    margin: 0.5vw 0;
+}
+
+label::after, label::before, label span {
+    position: absolute;
+    width: 100%;
+    height: 0.3vw;
+    background-color: white;
+    transition: .3s;
+}
+
+label::before {
+    content: "";
+    top: 0;
+}
+
+label::after {
+    content: "";
+    bottom: 0;
+}
+
+label span {
+    top: 1.1vw;
+}
+
+#burger-toggle:checked ~ label::after {
+    transform: rotate(45deg);
+    bottom: 1vw;
+}
+
+#burger-toggle:checked ~ label::before {
+    transform: rotate(-45deg);
+    top: 1.2vw;
+}
+
+#burger-toggle:checked ~ label span {
+    transform: rotate(-45deg);
+    top: 1.2vw;
+}
+
+ul {
+    position: fixed;
+    left: 0;
+    right: 0;
+    background-color: #043873;
+    padding-top: 30vw;
+    margin-bottom: 0.5vw;
+    z-index: -1;
+    flex-direction: column;
+    text-align: center;
+
+    left: -100vw;
+    right: 100vw;
+}
+
+#burger-toggle:checked ~ ul {
+    left: 0;
+    right: 0;
+}
+
+li a {
+    font-size: 4vw;
+}
+  /*HERO-SECTION*/
+  .slogan{
+    padding-top: 30vw;
+    font-size: 8vw;
+    text-align: center;
+
+  }
+  .under-slogan{
+    display: flex;
+    padding-top: 1.04vw;
+    text-align: center;
+    font-size: 4vw;
+  }
+  /*OPPORTUNITIES*/
+  .opportunities{
+    background-color: white;
+    color: black;
+    padding-top: 7.8vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрирование h2 */
+    padding-bottom: 7.8vw;
+  }
+  
+  .opportunities h2 {
+    font-size: 8.86vw; /* Установим базовый размер текста */
+    text-align: center;
+    margin-bottom: 3.04vw;
+    padding-bottom: 3.91vw; /* Отступ снизу, чтобы колонки не примыкали к заголовку */
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column; /* Для вертикального размещения колонок */
+    align-items: flex-start; /* Выровнять все колонки по левому краю */
+    padding-left: 1vw; /* Отступ слева от контейнера */
+    padding-right: 1vw; /* Отступ справа от контейнера, если необходимо */
+}
+
+.column {
+  width: 100%; /* Колонки занимают всю ширину контейнера */
+  margin: 0; /* Убедиться, что нет дополнительных отступов между колонками */
+}
+
+.item {
+  margin-bottom: 10.7vw; /* Расстояние между элементами */
+  display: flex; /* Держим элементы в строке */
+  flex-direction: row; /* Выравнивание картинки и текста в строку */
+  align-items: flex-start; /* Выравнивание содержимого по верхнему краю */
+  padding-left: 1vw; /* Отступ слева для элемента */
+  padding-right: 1vw; /* Отступ справа для элемента, при необходимости */
+  width: calc(100% - 2vw); /* Убедитесь, что ширина учитывает отступы */
+}
+  
+  .item img {
+    width: auto;
+    height: 15.3vw;
+    margin-right: 8.8vw; /* Расстояние между изображением и текстом */
+    max-height: 100%;
+  }
+  
+  .item p {
+    font-size: 3.5vw; /* Размер текста зависит от ширины экрана */
+  }
+  
+  
+  /*PRICE*/
+  .price {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    padding: 15% 0; /* Увеличено отступы сверху и снизу */
+}
+
+.choose-price {
+    font-size: 8vw; /* Увеличен размер шрифта */
+    margin-bottom: 1vw; /* Увеличен отступ снизу */
+}
+
+.under-price {
+    padding-top: 4vw; /* Увеличено верхнее значение отступа */
+    padding-bottom: 6vw; /* Увеличено нижнее значение отступа */
+    color: white;
+    font-size: 4vw; /* Увеличен размер шрифта */
+    margin-bottom: 3vw; /* Увеличен отступ снизу */
+    text-align: center;
+    width: 80vw; /* Увеличена ширина */
+}
+
+.rate-container {
+    display: flex; /* Контейнер для блоков */
+    flex-direction: column; /* Размещаем блоки один под другим */
+    gap: 8vw; /* Увеличено расстояние между блоками */
+}
+
+.rate {
+    background-color: white;
+    border: 1vw solid #FDC210; /* Увеличена толщина рамки */
+    border-radius: 1.5vw; /* Увеличен радиус скругления */
+    width: 66vw; /* Увеличена ширина */
+    flex: 1; /* Позволяет блокам занимать одинаковую высоту */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: black;
+    padding: 4vw; /* Увеличен внутренний отступ */
+}
+
+.text-free, .text-subscription {
+    font-weight: bold;
+    font-size: 4vw; /* Увеличен размер шрифта */
+    margin-bottom: 1vw; /* Увеличен отступ снизу */
+}
+
+.price-value {
+    font-size: 5vw; /* Увеличен размер шрифта */
+    margin-bottom: 1vw; /* Увеличен отступ снизу */
+    align-self: flex-start;
+}
+
+.what-included {
+    font-size: 3vw; /* Увеличен размер шрифта */
+    margin-bottom: 1vw; /* Увеличен отступ снизу */
+}
+
+ul.features {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: block;
+    margin-top: 3vw; /* Увеличен верхний отступ */
+    position: relative;
+    z-index: 999;
+    text-align: left;
+    background-color: transparent;
+}
+
+ul.features li {
+    font-size: 3vw; /* Увеличен размер шрифта */
+    margin-bottom: 3vw; /* Увеличен отступ снизу */
+    color: black;
+}
+
+ul.features li::before {
+    content: "";
+    display: inline-block;
+    width: 4vw; /* Увеличена ширина иконки */
+    height: 4vw; /* Увеличена высота иконки */
+    background-image: url('./icons/Icon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 2vw; /* Увеличен отступ справа */
+}
+  
+  /*Footer*/
+  footer {
+    background-color: white;
+    padding: 20vw 20vw;
+}
+
+.footer__top {
+    display: flex;
+    flex-direction: column; /* Вертикальное расположение */
+    align-items: center; /* Центрирование содержимого */
+    margin-bottom: 5vw;
+}
+
+.footer__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Вертикальное расположение для навигации */
+    align-items: center; /* Центрирование элементов */
+    margin-bottom: 5vw; /* Отступ снизу для списка навигации */
+}
+
+.footer__link {
+    color: #043873;
+    text-decoration: none;
+    text-align: center;
+    margin-bottom: 5vw; /* Отступ между ссылками навигации */
+}
+
+.social-media {
+    display: flex;
+    gap: 10vw;
+    justify-content: center;
+    margin-bottom: 5vw; /* Отступ снизу для соц. сетей */
+}
+
+.footer__content {
+    display: flex;
+    flex-direction: column; /* Вертикальное расположение */
+    align-items: center; /* Центрирование содержимого */
+    justify-content: center; /* Центрирование содержимого */
+}
+
+.logo-and-text {
+    display: flex;
+    flex-direction: column; /* Вертикальное расположение логотипа и текста */
+    align-items: center; /* Центрирование содержимого */
+}
+
+.newsletter {
+    display: flex;
+    flex-direction: column; /* Вертикальное расположение email и кнопки */
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10vw;
+}
+
+.email-input {
+    padding: 0.5vw;
+    border: 0.1vw solid #ccc;
+    border-radius: 0.3vw;
+    margin-bottom: 4vw; /* Отступ между полем ввода и кнопкой */
+    width: 50vw;
+    font-size: 5vw;
+}
+
+.subscribe-button {
+    padding: 0.5vw 1vw;
+    background-color: #043873; /* Цвет кнопки */
+    color: white; /* Цвет текста на кнопке */
+    border: none;
+    border-radius: 0.3vw;
+    cursor: pointer;
+    width: 30vw;
+    font-size: 4vw;
+}
+
+.subscribe-button:hover {
+    background-color: #022A4D; /* Цвет кнопки при наведении */
+}
+
+.footer__text {
+    color: #043873;
+    text-align: center; /* Центрирование текста */
+    margin: 1vw 0 0;
+    font-size: 3vw;
+}
+
+.icons_logo {
+    width: 6.7vw;
+    height: auto;
+}
+  .logo_wardrobe{
+    width: 30vw;
+    height: auto;
+    padding-top: 1vw;
+  }
+}
