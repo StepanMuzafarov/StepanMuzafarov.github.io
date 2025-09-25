@@ -1,0 +1,144 @@
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: lightgray;
+    font-size: 1rem;
+}
+
+header {
+    background-color: cornflowerblue;
+    padding: 1.25rem 2rem;
+}
+
+#todo-list {
+    color: white;
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: normal;
+}
+
+main {
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: 1.25rem;
+}
+
+.new-task {
+    background: white;
+    width: 30rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.new-task h2 {
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+    font-weight: normal;
+}
+
+#name-new-task {
+    width: 13rem;
+    padding: 1rem 1rem;
+    border: 0.01rem solid grey;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    margin-right: 0.625rem;
+}
+
+#add-button {
+    background: cornflowerblue;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.backlog, .in-progress, .ready, .bin {
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+.backlog-head {
+    background-color: grey;
+    border-radius: 0.5rem;
+    width: 4.2rem;
+    padding: 0.8rem;
+}
+
+.in-progress-head {
+    background-color: blue;
+    border-radius: 0.5rem;
+    width: 7rem;
+    padding: 0.8rem;
+}
+
+.ready-head {
+    background-color: green;
+    border-radius: 0.5rem;
+    width: 4.2rem;
+    padding: 0.8rem;
+}
+
+.bin-head {
+    background-color: red;
+    border-radius: 0.5rem;
+    width: 5rem;
+    padding: 0.8rem;
+}
+
+.backlog-tasks, .in-progress-tasks, .ready-tasks, .bin-tasks {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+    min-height: 6.25rem;
+}
+
+.backlog-tasks li, .in-progress-tasks li, .ready-tasks li, .bin-tasks li {
+    background: white;
+    margin-bottom: 0.5rem;
+    padding: 0.625rem;
+    border-radius: 0.25rem;
+    border-left: 0.25rem solid;
+    cursor: pointer;
+    font-size: 0.875rem;
+}
+
+.backlog-tasks li {
+    border-left-color: grey;
+}
+
+.in-progress-tasks li {
+    border-left-color: blue;
+}
+
+.ready-tasks li {
+    border-left-color: green;
+}
+
+.bin-tasks li {
+    border-left-color: red
+}
+
+
+#clear-button {
+    width: 100%;
+    background: red;
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+}
