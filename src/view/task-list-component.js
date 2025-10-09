@@ -1,27 +1,33 @@
 import {createElement} from '../framework/render.js';
+import { StatusToTitleMap } from '../const.js';
 
-function createTaskListComponentTemplate() {
-    return `
-        <div class="backlog">
-            <h3 class="backlog-head">Бэклог</h3>
-            <ul class="backlog-tasks"></ul>
-        </div>
-    `;
+function createTaskListComponentTemplate(status) {
+  const title = StatusToTitleMap[status];
+  return `
+    <div class="${status}">
+      <h3 class="${status}-head">${title}</h3>
+      <ul class="${status}-tasks"></ul>
+    </div>
+  `;
 }
 
 export default class TaskListComponent {
-    getTemplate() {
-        return createTaskListComponentTemplate();
-    }
+  constructor(status) {
+    this.status = status;
+  }
 
-    getElement() {
-        if (!this.element) {
-            this.element = createElement(this.getTemplate());
-        }
-        return this.element;
-    }
+  getTemplate() {
+    return createTaskListComponentTemplate(this.status);
+  }
 
-    removeElement() {
-        this.element = null;
+  getElement() {
+    if (!this.element) {
+      this.element = createElement(this.getTemplate());
     }
+    return this.element;
+  }
+
+  removeElement() {
+    this.element = null;
+  }
 }
