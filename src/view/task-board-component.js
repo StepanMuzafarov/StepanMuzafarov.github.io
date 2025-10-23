@@ -1,22 +1,7 @@
-import {createElement} from '../framework/render.js';
+import { AbstractComponent } from '../framework/view/abstract-component.js';
 
-function createTaskBoardComponentTemplate() {
+export class TaskBoardComponent extends AbstractComponent {
+  get template() {
     return `<section class="board"></section>`;
-}
-
-export default class TaskBoardComponent {
-    getTemplate() {
-        return createTaskBoardComponentTemplate();
-    }
-
-    getElement() {
-        if (!this.element) {
-            this.element = createElement(this.getTemplate());
-        }
-        return this.element;
-    }
-
-    removeElement() {
-        this.element = null;
-    }
+  }
 }

@@ -1,11 +1,19 @@
-class TaskModel {
-  constructor(tasks) {
-    this.tasks = tasks;
+export class TaskModel {
+  #boardTasks = [];
+
+  constructor(tasks = []) {
+    this.#boardTasks = [...tasks];
   }
 
-  getTasks() {
-    return this.tasks;
+  get tasks() {
+    return [...this.#boardTasks];
+  }
+
+  addTask(task) {
+    this.#boardTasks.push(task);
+  }
+
+  clear() {
+    this.#boardTasks = [];
   }
 }
-
-export default TaskModel;
