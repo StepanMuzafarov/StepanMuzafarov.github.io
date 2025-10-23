@@ -9,7 +9,7 @@ const RenderPosition = {
 
 function createElement(template) {
   const newElement = document.createElement('div');
-  newElement.innerHTML = template;
+  newElement.innerHTML = template.trim();
   return newElement.firstElementChild;
 }
 
@@ -25,4 +25,8 @@ function render(component, container, place = RenderPosition.BEFOREEND) {
   container.insertAdjacentElement(place, component.element);
 }
 
-export {RenderPosition, createElement, render};
+function clearElement(element) {
+  element.innerHTML = '';
+}
+
+export { RenderPosition, createElement, render, clearElement };
