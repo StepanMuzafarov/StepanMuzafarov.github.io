@@ -1,5 +1,6 @@
 export class TaskModel {
   #boardTasks = [];
+  #observers = [];
 
   constructor(tasks = []) {
     this.#boardTasks = [...tasks];
@@ -11,9 +12,19 @@ export class TaskModel {
 
   addTask(task) {
     this.#boardTasks.push(task);
+    this.#notify();
   }
 
-  clear() {
-    this.#boardTasks = [];
+  clearBin() {
+    this.#boardTasks = this.#boardTasks.filter(task => task.status !== 'bin');
+    this.#notify();
+  }
+
+  addObserver(observer) {
+    this.#observers.push(observer);
+  }
+
+  #notify() {
+    this.#observers.forEach(observer => observer());
   }
 }

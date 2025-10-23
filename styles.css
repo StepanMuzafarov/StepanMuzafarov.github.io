@@ -59,10 +59,11 @@ main {
     font-size: 0.875rem;
 }
 
-.board {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
+.board-section {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  padding: 1.25rem 0;
 }
 
 .backlog, .in-progress, .ready, .bin {

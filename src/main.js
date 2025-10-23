@@ -10,13 +10,20 @@ const formSectionContainer = document.querySelector('.form-section');
 const boardSectionContainer = document.querySelector('.board-section');
 
 const tasksModel = new TaskModel(tasks);
-
-render(new HeaderComponent(), bodyContainer, RenderPosition.AFTERBEGIN);
-
-render(new NewTaskComponent(), formSectionContainer);
-
 const tasksBoardPresenter = new TasksBoardPresenter({
   boardContainer: boardSectionContainer,
   tasksModel: tasksModel
 });
+
+render(new HeaderComponent(), bodyContainer, RenderPosition.AFTERBEGIN);
+
+const newTaskComponent = new NewTaskComponent({
+  onAddTask: (title) => {
+    tasksBoardPresenter.handleAddTask(title);
+  }
+});
+
+render(newTaskComponent, formSectionContainer);
+newTaskComponent.setEventListeners();
+
 tasksBoardPresenter.init();
