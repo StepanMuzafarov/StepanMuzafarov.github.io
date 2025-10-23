@@ -1,6 +1,6 @@
-import HeaderComponent from './view/header-component.js';
-import NewTaskComponent from './view/new-task-component.js';
-import TaskModel from './model/task-model.js';
+import { HeaderComponent } from './view/header-component.js';
+import { NewTaskComponent } from './view/new-task-component.js';
+import { TaskModel } from './model/task-model.js';
 import TasksBoardPresenter from './presenter/tasks-board-presenter.js';
 import { render, RenderPosition } from './framework/render.js';
 import { tasks } from './mock/task.js';

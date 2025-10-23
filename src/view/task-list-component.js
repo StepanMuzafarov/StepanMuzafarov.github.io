@@ -1,33 +1,19 @@
-import {createElement} from '../framework/render.js';
+import { AbstractComponent } from '../framework/view/abstract-component.js';
 import { StatusToTitleMap } from '../const.js';
 
-function createTaskListComponentTemplate(status) {
-  const title = StatusToTitleMap[status];
-  return `
-    <div class="${status}">
-      <h3 class="${status}-head">${title}</h3>
-      <ul class="${status}-tasks"></ul>
-    </div>
-  `;
-}
-
-export default class TaskListComponent {
+export class TaskListComponent extends AbstractComponent {
   constructor(status) {
+    super();
     this.status = status;
   }
 
-  getTemplate() {
-    return createTaskListComponentTemplate(this.status);
-  }
-
-  getElement() {
-    if (!this.element) {
-      this.element = createElement(this.getTemplate());
-    }
-    return this.element;
-  }
-
-  removeElement() {
-    this.element = null;
+  get template() {
+    const title = StatusToTitleMap[this.status];
+    return `
+      <div class="${this.status}">
+        <h3 class="${this.status}-head">${title}</h3>
+        <ul class="${this.status}-tasks"></ul>
+      </div>
+    `;
   }
 }
